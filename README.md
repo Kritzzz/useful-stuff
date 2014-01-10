@@ -17,12 +17,19 @@
 3. ???
 4. PROFIT
 
+Kein Bock auf Videoaufnahme? How about just .png.
+
+	#!/bin/bash
+	i=1;while [ 1 ];do screencapture -t jpg -x ~/Desktop/output/$i.jpg; let i++; sleep 5; done
+
+
 ##### Variante 1
 
 Liegt das Video vor, kann man es mithilfe von `ffmpeg` zu einem .gif konvertieren. Da der Output für gewöhnlich recht groß ausfällt, kann man das .gif noch mittels `gifsicle` komprimieren.
 
 	$ ffmpeg -i video.avi -s 800x600 -pix_fmt rgb24 -r 10 -f gif MCDreidel.gif
 	$ gifsicle --optimize=3 --delay=10 -i < MCDreidel.gif > MCDreidel_optimized.gif
+
 	
 ![MCDreidel_optimized.gif](http://d.pr/i/FPfE+)
 
