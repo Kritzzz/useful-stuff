@@ -6,10 +6,6 @@ from urlparse import urlparse
 import requests
 import urllib
 
-
-
-
-
 ##Requst workouts page: Overview
 page = requests.get('http://neilarey.com/workouts.html')
 tree = html.fromstring(page.text)
@@ -27,8 +23,8 @@ for link in links:
 	string1 = '/workouts/'
 	string2 = ".html"
 	picname = link
-	picname = picname.replace(string1, "")
-	picname = picname.replace(string2, "")
+	picname = picname.replace(string1, '')
+	picname = picname.replace(string2, '')
 	print picname
 	#links to images
 	linkpic = workouttree.xpath('//*/p/img/@src')
@@ -38,7 +34,7 @@ for link in links:
 	print len(linkpic)
 	if len(linkpic) == 1:
 		print linkpic[0]
-		image = urllib.urlopen(linkpic[0]).read()
+		image = urllib.urlopen('http://neilarey.com%s'% linkpic[0]).read()
 		outfile = open('{0}.png'.format(picname),'wb')
 		outfile.write(image)
-		outfile.close()	
+		outfile.close()
